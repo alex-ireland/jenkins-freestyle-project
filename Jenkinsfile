@@ -6,6 +6,7 @@ pipeline {
                 sh "echo 'building...'"
                 sh "pwd"
                 sh "echo 'Hello World!' > code.sh"
+                sh "chmod a+x code.sh"
             }
         }
         stage('test') {
@@ -14,7 +15,7 @@ pipeline {
                 sh "ls -la"
                 script {
                     RESULT = sh (
-                        script: 'sudo ./code.sh',
+                        script: './code.sh',
                         returnStdout: true
                     ).trim()
                 }
