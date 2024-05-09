@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh "echo 'building...'"
                 sh "pwd"
-                sh "cat 'Hello World!' > code.sh"
+                sh "echo 'Hello World!' > code.sh"
             }
         }
         stage('test') {
