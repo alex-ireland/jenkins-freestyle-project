@@ -14,7 +14,7 @@ pipeline {
                 sh "ls -la"
                 script {
                     RESULT = sh (
-                        script: './code.sh',
+                        script: 'sudo ./code.sh',
                         returnStdout: true
                     ).trim()
                 }
