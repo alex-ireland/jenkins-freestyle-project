@@ -1,19 +1,26 @@
 pipeline {
     agent any
     stages {
-        stage('run script') {
+        stage('build') {
             steps {
-                sh "./run.sh"
+                sh "echo 'building...'"
+                sh "pwd"
+                sh "cat 'Hello World!' > code.sh"
             }
         }
-        stage('sleep 4 seconds') {
+        stage('test') {
             steps {
-                sh "sleep 4"
+                sh "echo 'testing...'"
+                sh "ls -la"
+                sh "var=$RESULT(./code.sh)"
+                script {
+                    assert $RESULT == 'Hello World!'
+                }
             }
         }
-        stage('exit') {
+        stage('deploy') {
             steps {
-                sh "exit"
+                sh "echo 'deploying...'"
             }
         }
     }
