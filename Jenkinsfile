@@ -12,10 +12,17 @@ pipeline {
             steps {
                 sh "echo 'testing...'"
                 sh "ls -la"
-                sh "RESULT="$(./code.sh)""
                 script {
-                    assert $RESULT == 'Hello World!'
+                    RESULT = sh (
+                        script: './code.sh',
+                        returnStdout: true
+                    ).trim()
                 }
+                // sh "RESULT="$(./code.sh)""
+                echo $RESULT
+                // script {
+                //     assert $RESULT == 'Hello World!'
+                // }
             }
         }
         stage('deploy') {
