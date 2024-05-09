@@ -17,7 +17,8 @@ pipeline {
                     RESULT = sh (
                         script: './code.sh',
                         returnStdout: true
-                    ).trim()
+                    )
+                    echo RESULT
                 }
                 // sh "RESULT="$(./code.sh)""
                 echo $RESULT
