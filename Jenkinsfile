@@ -6,9 +6,9 @@ pipeline {
                 sh "./run.sh"
             }
         }
-        stage('sleep 6 seconds') {
+        stage('sleep 4 seconds') {
             steps {
-                sh "sleep 6"
+                sh "sleep 4"
             }
         }
         stage('exit') {
