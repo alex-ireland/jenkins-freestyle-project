@@ -13,7 +13,7 @@ pipeline {
                 sh "echo 'testing...'"
                 sh "ls -la"
                 script {
-                    "RESULT=${(./code.sh)}"
+                    "RESULT=$(./code.sh)"
                 }
                 script {
                     assert $RESULT == 'Hello World!'
