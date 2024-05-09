@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh "echo 'building...'"
                 sh "pwd"
-                sh "echo 'Hello World!' > code.sh"
+                sh "echo 'echo Hello World!' > code.sh"
                 sh "chmod a+x code.sh"
             }
         }
@@ -17,14 +17,10 @@ pipeline {
                     RESULT = sh (
                         script: './code.sh',
                         returnStdout: true
-                    )
-                    echo RESULT
+                    ).trim()
+                    println RESULT
+                    assert RESULT == "Hello World!"
                 }
-                // sh "RESULT="$(./code.sh)""
-                echo $RESULT
-                // script {
-                //     assert $RESULT == 'Hello World!'
-                // }
             }
         }
         stage('deploy') {
